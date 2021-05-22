@@ -4,7 +4,7 @@ import yaml #to read the configurations from yasml files
 import logging  #to handle the logs
 
 
-def read_params(config_path):
+def read_params(config_path):   #To read all configurations from the yaml file
     with open(config_path) as yaml_file:
         config = yaml.safe_load(yaml_file)
     return config
@@ -15,7 +15,7 @@ def main(config_path, datasource):
     
 if __name__=="__main__":
     args = argparse.ArgumentParser()
-    default_config_path = os.path.join("config", "params.yaml")
+    default_config_path = os.path.join("config", "params.yaml") #Done to remove inconsistency in filepath conventions in Windows (config\path) and Linux based systems (config/path)
     args.add_argument("--config", default=default_config_path)  #Add configuration file
     args.add_argument("--datasource", default=None) #Add data source
 
